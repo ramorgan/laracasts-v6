@@ -14,3 +14,23 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/welcome', function () {
+    return view('welcome');
+});
+
+Route::get('/test', function () {
+
+    $name = request('name');
+
+    return view('test', ['name' => $name]);
+});
+
+
+Route::get('/helloworld', function () {
+    return "Hello World";
+});
+
+Route::get('/json', function () {
+    return ['foo' => 'bar', 'message' => ['Hello World', 'Hi mom', 'Look no hands']];
+});
+
