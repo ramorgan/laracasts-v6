@@ -34,8 +34,8 @@ Route::get('/json', function () {
     return ['foo' => 'bar', 'message' => ['Hello World', 'Hi mom', 'Look no hands']];
 });
 
-
-Route::get('/post/{pid}', function ($pid) {
+/*
+Route::get('/posts/{pid}', function ($pid) {
     $post = [
         0 => "Hello World, this is my first blog post",
         1 => "Now I'm getting the hang of this blogging thing"
@@ -49,3 +49,7 @@ Route::get('/post/{pid}', function ($pid) {
         'post' => $post[$pid]
     ]);
 });
+*/
+
+Route::get('/posts/{pid}', 'PostsController@show');
+
