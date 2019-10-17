@@ -1,5 +1,5 @@
 <?php
-
+/** @var object $post */
 ?>
     <!DOCTYPE html>
 <html>
@@ -9,9 +9,9 @@
     <title>Post</title>
 </head>
 <body>
-<h1>My Blog post</h1>
+<h1>{$post->title} </h1>
 <p>
-    {{$post}}
+    {{$post->body}}
 </p>
 </body>
 </html>
