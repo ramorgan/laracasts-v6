@@ -16,7 +16,7 @@ class CreateArticlesTable extends Migration
         Schema::create('articles', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('title');
-            $table->text('exerpt');
+            $table->text('excerpt');
             $table->text('body');
             $table->timestamps();
         });
