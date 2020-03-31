@@ -20,6 +20,8 @@ Released   : 20140225
     <link href="/css/default.css" rel="stylesheet" type="text/css"/>
     <link href="/css/fonts.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.5/css/bulma.css">
+    {{--<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.1/css/bulma.css">--}}
 
 </head>
 <body>
