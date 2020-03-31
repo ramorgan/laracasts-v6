@@ -30,6 +30,7 @@ class ArticlesController extends Controller
     public function create()
     {
         // shows a view to create a resource.
+        return view('articles.create');
     }
 
     public function store()
