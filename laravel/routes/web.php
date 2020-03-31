@@ -53,3 +53,17 @@ Route::get('/posts/{pid}', function ($pid) {
 
 Route::get('/posts/{pid}', 'PostsController@show');
 
+
+Route::get('/contact', function(){
+    return view('contact');
+});
+
+
+Route::get('/about', function(){
+
+    $articles = App\Article::take(3)->latest()->get();
+    return view('about',['articles'=> $articles,]);
+});
+
+Route::get('/articles', 'ArticlesController@index');
+Route::get('/articles/{article}', 'ArticlesController@show');
