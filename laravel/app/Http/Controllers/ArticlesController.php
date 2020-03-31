@@ -36,7 +36,15 @@ class ArticlesController extends Controller
     public function store()
     {
         // Persist the new resource.
-        dump(\request()->all());
+//        dump(\request()->all());
+        $article = new Article();
+        $article->title = Request('title');
+        $article->excerpt = Request('excerpt');
+        $article->body = Request('body');
+
+        $article->save();
+
+        return redirect('/articles');
     }
 
     protected function edit()
