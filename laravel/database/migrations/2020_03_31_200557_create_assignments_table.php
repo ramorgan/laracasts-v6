@@ -17,7 +17,7 @@ class CreateAssignmentsTable extends Migration
             $table->bigIncrements('id');
             $table->text('body');
             $table->timestamps();
-            $table->boolean('completed');
+            $table->boolean('completed')->default(false);
             $table->timestamp('due_date')->nullable();
         });
     }
