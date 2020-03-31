@@ -53,3 +53,7 @@ Route::get('/posts/{pid}', function ($pid) {
 
 Route::get('/posts/{pid}', 'PostsController@show');
 
+
+Route::get('/contact', function(){
+    return view('contact');
+});
