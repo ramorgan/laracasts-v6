@@ -36,6 +36,7 @@ class ArticlesController extends Controller
     public function store()
     {
         // Persist the new resource.
+        dump(\request()->all());
     }
 
     protected function edit()
