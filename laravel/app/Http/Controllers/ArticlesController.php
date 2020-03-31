@@ -15,4 +15,12 @@ class ArticlesController extends Controller
 
         return view('articles.show', ['article' => $article]);
     }
+
+    public function list()
+    {
+        $articles = [];
+
+        $articles = Article::take(3)->latest()->get();
+        return view('articles.list', ['articles' => $articles]);
+    }
 }

@@ -65,4 +65,5 @@ Route::get('/about', function(){
     return view('about',['articles'=> $articles,]);
 });
 
+Route::get('/articles', 'ArticlesController@list');
 Route::get('/articles/{article}', 'ArticlesController@show');
