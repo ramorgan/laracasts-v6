@@ -77,6 +77,13 @@ class ArticlesController extends Controller
 
         $article->save();
 
+        Article::create([
+            'title' => \request('title'),
+            'excerpt' => \request('excerpt'),
+            'body' => \request('body'),
+
+        ]);
+
         return redirect("/articles/$article->id");
 
     }
