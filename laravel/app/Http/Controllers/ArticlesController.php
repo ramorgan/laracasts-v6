@@ -64,7 +64,7 @@ class ArticlesController extends Controller
     {
         request()->validate(
             [
-                'title' => ['required','alpha_num','min:3','max:255'],
+                'title' => ['required','min:3','max:255'],
                 'excerpt' => 'required',
                 'body' => 'required',
             ]
