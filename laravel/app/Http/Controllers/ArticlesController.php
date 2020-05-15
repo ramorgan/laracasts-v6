@@ -8,10 +8,8 @@ use App\Article;
 
 class ArticlesController extends Controller
 {
-    public function show($id)
+    public function show(Article $article)
     {
-        // show a single resource.
-        $article = Article::find($id);
 
         return view('articles.show', ['article' => $article]);
     }
@@ -57,17 +55,12 @@ class ArticlesController extends Controller
         return redirect('/articles');
     }
 
-    protected function edit($id)
-    {
-        //Get the article based on id from uri
-        $article = Article::find($id);
-
-
+    protected function edit(Article $article){
 
         return view('articles.edit', compact('article'));
     }
 
-    protected function update($id)
+    protected function update(Article $article)
     {
         request()->validate(
             [
@@ -78,7 +71,6 @@ class ArticlesController extends Controller
         );
 
         // Persist the edit resource.
-        $article = Article::find($id);
         $article->title = Request('title');
         $article->excerpt = Request('excerpt');
         $article->body = Request('body');
@@ -89,7 +81,7 @@ class ArticlesController extends Controller
 
     }
 
-    protected function destroy()
+    protected function destroy(Article $article)
     {
         // Delete the resource.
     }
