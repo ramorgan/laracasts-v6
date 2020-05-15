@@ -52,7 +52,7 @@ class ArticlesController extends Controller
 
         $article->update($validatedAttributes);
 
-        return redirect(route('articles.show',$article));
+        return redirect($article->path());
 
     }
 

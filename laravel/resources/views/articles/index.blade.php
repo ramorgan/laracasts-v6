@@ -8,7 +8,7 @@
                     <li>
                         <div class="content">
                             <h2>
-                                <a href="{{ route('articles.show', $article->id) }}">
+                                <a href="{{ $article->path() }}">
                                     {{$article->title}}
                                 </a>
                             </h2>
