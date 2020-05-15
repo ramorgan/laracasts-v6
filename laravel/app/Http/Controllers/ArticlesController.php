@@ -34,23 +34,9 @@ class ArticlesController extends Controller
     public function store()
     {
 
-        request()->validate(
-            [
-                'title' => ['required','alpha_num','min:3','max:255'],
-                'excerpt' => 'required',
-                'body' => 'required',
-            ]
-        );
+        $validatedAttributes = $this->validateArticle();
 
-
-        // Persist the new resource.
-
-        $article = new Article();
-        $article->title = Request('title');
-        $article->excerpt = Request('excerpt');
-        $article->body = Request('body');
-
-        $article->save();
+        Article::create($validatedAttributes);
 
         return redirect('/articles');
     }
@@ -60,29 +46,12 @@ class ArticlesController extends Controller
         return view('articles.edit', compact('article'));
     }
 
+
     protected function update(Article $article)
     {
-        request()->validate(
-            [
-                'title' => ['required','min:3','max:255'],
-                'excerpt' => 'required',
-                'body' => 'required',
-            ]
-        );
+        $validatedAttributes = $this->validateArticle();
 
-        // Persist the edit resource.
-        $article->title = Request('title');
-        $article->excerpt = Request('excerpt');
-        $article->body = Request('body');
-
-        $article->save();
-
-        Article::create([
-            'title' => \request('title'),
-            'excerpt' => \request('excerpt'),
-            'body' => \request('body'),
-
-        ]);
+        $article->update($validatedAttributes);
 
         return redirect("/articles/$article->id");
 
@@ -91,5 +60,16 @@ class ArticlesController extends Controller
     protected function destroy(Article $article)
     {
         // Delete the resource.
+    }
+
+    protected function validateArticle()
+    {
+        return request()->validate(
+            [
+                'title' => ['required', 'min:3', 'max:255'],
+                'excerpt' => 'required',
+                'body' => 'required',
+            ]
+        );
     }
 }
