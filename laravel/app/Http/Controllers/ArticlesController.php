@@ -47,14 +47,28 @@ class ArticlesController extends Controller
         return redirect('/articles');
     }
 
-    protected function edit()
+    protected function edit($id)
     {
-        // Show a form to edit an existing resource.
+        //Get the article based on id from uri
+        $article = Article::find($id);
+
+
+
+        return view('articles.edit', compact('article'));
     }
 
-    protected function update()
+    protected function update($id)
     {
         // Persist the edit resource.
+        $article = Article::find($id);
+        $article->title = Request('title');
+        $article->excerpt = Request('excerpt');
+        $article->body = Request('body');
+
+        $article->save();
+
+        return redirect("/articles/$article->id");
+
     }
 
     protected function destroy()
