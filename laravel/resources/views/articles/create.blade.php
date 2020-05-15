@@ -10,6 +10,16 @@
         <div id="page" class="container">
             <h1 class="heading has-text-weight-bold is-size-4"> New Article</h1>
 
+            @if ($errors->any())
+                <div class="help is-danger">
+                    <ul>
+                        @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                        @endforeach
+                    </ul>
+                    <br/>
+                </div>
+            @endif
             <form method="POST" action="/articles">
                 @csrf
 
@@ -17,9 +27,17 @@
                     <label class="label" for="title">Title</label>
 
                     <div class="control">
-                        <input class="input @error('title') is-danger @enderror" type="text" name="title" id="title">
+                        <input
+                                class="input @error('title') is-danger @enderror"
+                                type="text"
+                                name="title" id="title"
+                                value="{{old('title')}}"
+                        >
+
                         @error('title')
-                            <p class="help is-danger">{{ $errors->first('title')}}</p>
+                            <p class="help is-danger">
+                                {{ $errors->first('title')}}
+                            </p>
                         @enderror
                     </div>
                 </div>
@@ -28,7 +46,10 @@
                     <label class="label" for="excerpt">Excerpt</label>
 
                     <div class="control">
-                        <textarea class="textarea @error('excerpt') is-danger @enderror" name="excerpt" id="excerpt"></textarea>
+                        <textarea
+                                class="textarea @error('excerpt') is-danger @enderror"
+                                name="excerpt"
+                                id="excerpt">{{old('excerpt')}}</textarea>
                         @error('title')
                         <p class="help is-danger">{{ $errors->first('excerpt')}}</p>
                         @enderror
@@ -39,7 +60,10 @@
                     <label class="label" for="body">Body</label>
 
                     <div class="control">
-                        <textarea class="textarea @error('body') is-danger @enderror" name="body" id="body"></textarea>
+                        <textarea
+                                class="textarea @error('body') is-danger @enderror"
+                                name="body"
+                                id="body">{{@old('body')}}</textarea>
                         @error('title')
                         <p class="help is-danger">{{ $errors->first('body')}}</p>
                         @enderror
