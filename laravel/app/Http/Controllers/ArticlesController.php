@@ -38,7 +38,7 @@ class ArticlesController extends Controller
 
         request()->validate(
             [
-                'title' => ['required','min:3','max:255'],
+                'title' => ['required','alpha_num','min:3','max:255'],
                 'excerpt' => 'required',
                 'body' => 'required',
             ]
@@ -69,6 +69,14 @@ class ArticlesController extends Controller
 
     protected function update($id)
     {
+        request()->validate(
+            [
+                'title' => ['required','alpha_num','min:3','max:255'],
+                'excerpt' => 'required',
+                'body' => 'required',
+            ]
+        );
+
         // Persist the edit resource.
         $article = Article::find($id);
         $article->title = Request('title');
