@@ -8,7 +8,9 @@
                     <li>
                         <div class="content">
                             <h2>
-                                <a href="/articles/{{$article->id}}">{{$article->title}}</a>
+                                <a href="{{ route('articles.show', $article->id) }}">
+                                    {{$article->title}}
+                                </a>
                             </h2>
                         </div>
                         <p>{{ $article->excerpt }}</p>

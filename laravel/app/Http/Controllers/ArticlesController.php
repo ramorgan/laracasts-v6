@@ -37,8 +37,7 @@ class ArticlesController extends Controller
         $validatedAttributes = $this->validateArticle();
 
         Article::create($validatedAttributes);
-
-        return redirect('/articles');
+        return redirect(route('articles.index'));
     }
 
     protected function edit(Article $article){
@@ -53,7 +52,7 @@ class ArticlesController extends Controller
 
         $article->update($validatedAttributes);
 
-        return redirect("/articles/$article->id");
+        return redirect(route('articles.show',$article));
 
     }
 
